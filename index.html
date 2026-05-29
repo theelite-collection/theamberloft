@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Amber Loft | Luxury Stay Mohali</title>
+    <style>
+        /* CSS RESET & CORE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        :root {
+            --primary: #1e1e1e;
+            --accent: #c5a880;
+            --accent-light: #f4efe6;
+            --bg-cream: #fffdf9;
+            --text-dark: #2c2c2c;
+            --text-muted: #666;
+        }
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVIGATION BAR */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(30, 30, 30, 0.98);
+            padding: 20px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent);
+        }
+        .logo h1 {
+            color: #fff;
+            font-size: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .logo span {
+            color: var(--accent);
+            font-size: 13px;
+            text-transform: none;
+            display: block;
+            font-style: italic;
+            letter-spacing: 0px;
+            margin-top: 2px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+
+        /* PAGE SHEETS (High-Density Layout) */
+        .page-section {
+            padding: 60px 4%;
+            width: 100%;
+        }
+        .section-title {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        /* HERO / HERO CONTENT BLOCK */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('image_5.png') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--accent-light);
+            max-width: 700px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .btn-main {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-main:hover {
+            background: #b3956d;
+            transform: translateY(-2px);
+        }
+
+        /* ABOUT SECTION TABLES & GRIDS */
+        .grid-about {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-align: justify;
+        }
+        .amenities-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .amenities-table th {
+            background: var(--primary);
+            color: var(--accent);
+            text-align: left;
+            padding: 12px 15px;
+            font-size: 15px;
+        }
+        .amenities-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+        .amenities-table tr:nth-child(even) {
+            background: var(--bg-cream);
+        }
+
+        /* PICTURES GALLERY GRID */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .gallery-card {
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid var(--accent-light);
+            transition: transform 0.3s;
+        }
+        .gallery-card:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-image {
+            width: 100%;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .card-desc {
+            padding: 15px;
+        }
+        .card-desc h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        .card-desc p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* CONTACT & MAP SECTION */
+        .grid-contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .contact-info {
+            background: var(--primary);
+            color: #fff;
+            padding: 35px;
+            border-radius: 6px;
+            border-left: 5px solid var(--accent);
+        }
+        .info-block {
+            margin-bottom: 25px;
+        }
+        .info-block h5 {
+            color: var(--accent);
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .info-block p, .info-block a {
+            font-size: 16px;
+            color: #eee;
+            text-decoration: none;
+        }
+        .contact-form {
+            background: #fff;
+            padding: 35px;
+            border-radius: 6px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        .btn-submit {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* FOOTER BAR */
+        footer {
+            background: #111;
+            color: #777;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+            border-top: 1px solid #222;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; text-align: center; }
+            nav a { margin: 0 10px; }
+            .grid-about, .grid-contact { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 28px; }
+            .gallery-image { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>The Amber Loft</h1>
+            <span>Where comfort meets luxury</span>
+        </div>
+        <nav>
+            <a href="#about">The Loft</a>
+            <a href="#pictures">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>The Amber Loft</h2>
+        <p>Where comfort meets luxury</p>
+        <a href="https://www.airbnb.co.uk/rooms/1696188569977539325?unique_share_id=a996cf93-27af-4fce-b212-5219a68e02dc&viralityEntryPoint=1&s=76&source_impression_id=p3_1780049952_P3uqCii5d4EO_KBv" target="_blank" class="btn-main">Verify Live on Airbnb</a>
+    </section>
+
+    <section id="about" class="page-section">
+        <h3 class="section-title">The Property Overview</h3>
+        <p class="section-subtitle">Bespoke estate layout designed for absolute authenticity</p>
+        
+        <div class="grid-about">
+            <div class="about-text">
+                <p>Welcome to <strong>The Amber Loft</strong>, an exquisite luxury escape situated at 1747 Connaught Residency, inside the highly sought-after TDI Sector 74A premium enclave on Airport Road, Mohali. Tailored completely to reflect a sophisticated lifestyle, this sprawling 3-Bedroom, 2-Bathroom urban loft offers an authentic and fully transparent hosting layout comfortably accommodating up to 10 guests.</p>
+                <p>The space is custom-curated to merge top-tier modern structural elements with warm, welcoming ambiance. From the beautifully designed drop-ceilings and precision halo illumination systems to the high-end custom timber finishes and luxurious marble floor plates, every element ensures your stay feels like an elite boutique resort experience.</p>
+                <p><strong>Unmatched Location Context:</strong> Location precision is key to verifying our validity. The Amber Loft offers premium security and peaceful sector green paths while maintaining instant connectivity. Guests enjoy an effortless <strong>5-minute walk to the TDI Shopping Complex</strong>, making fine dining, essentials, coffee shops, and urban entertainment immediately accessible.</p>
+            </div>
+            
+            <div>
+                <table class="amenities-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Verified On-Site Amenities</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>🏡 <strong>Space Grid</strong></td><td>3 Premium Bedrooms, 2 Bathrooms, 10 Guest Capacity</td></tr>
+                        <tr><td>❄️ <strong>Climate Control</strong></td><td>Full Property High-Output AC Units</td></tr>
+                        <tr><td>🌐 <strong>Digital Network</strong></td><td>High-Speed Enterprise Grade Wi-Fi</td></tr>
+                        <tr><td>📺 <strong>Media Hub</strong></td><td>Smart Entertainment Television Array</td></tr>
+                        <tr><td>🚗 <strong>Parking Bay</strong></td><td>Dedicated Secure On-Site Free Car Parking</td></tr>
+                        <tr><td>🔥 <strong>Utility Grid</strong></td><td>High-Capacity Geyser Hot Water Systems</td></tr>
+                        <tr><td>🍳 <strong>Culinary Suite</strong></td><td>Premium Modular Kitchen with Refrigerator</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="pictures" class="page-section" style="background: #fdfaf4;">
+        <h3 class="section-title">Verified Gallery Portfolio</h3>
+        <p class="section-subtitle">Every view matches reality — zero hidden corners</p>
+        
+        <div class="gallery-grid">
+            
+            <div class="gallery-card">
+                <div class="gallery-image" style="background-image: url('image_0.png');"></div>
+                <div class="card-desc">
+                    <h4>The Grand Living Space</h4>
+                    <p>Bright, edge-to-edge ambient architecture featuring customized minimalist seating arrays, natural indoor plants, and vast window light panels.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image" style="background-image: url('image_1.png');"></div>
+                <div class="card-desc">
+                    <h4>Master Suite Bedroom 1</h4>
+                    <p>A sophisticated design engineered with custom floating nightstands, chocolate brown headboard, and massive mirrored wardrobe.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image" style="background-image: url('image_2.png');"></div>
+                <div class="card-desc">
+                    <h4>Fresh Comfort Bedroom 2</h4>
+                    <p>Integrating organic green highlights, unique drop ceiling design, circular jute mats, and a vintage industrial safe.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image" style="background-image: url('image_3.png');"></div>
+                <div class="card-desc">
+                    <h4>Designer Bathroom 1</h4>
+                    <p>A sleek, dark hospitality-inspired washroom configuration utilizing indirect halo lighting and premium Marquina stone finishes.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image" style="background-image: url('image_4.png');"></div>
+                <div class="card-desc">
+                    <h4>Luxury Bathroom 2</h4>
+                    <p>A bright, cleanly organized space featuring warm onyx hues, modern chrome shower fixtures, and on-demand water heating.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-image" style="background-image: url('image_5.png');"></div>
+                <div class="card-desc">
+                    <h4>Open-Concept Living Hub</h4>
+                    <p>Expansive view of the loft's core, connecting seating areas, custom storage nodes, and the scenic balcony overlook.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="page-section">
+        <h3 class="section-title">Direct Concierge &amp; Validation</h3>
+        <p class="section-subtitle">Connect with Host Khushi Narula for institutional trust</p>
+        
+        <div class="grid-contact">
+            <div class="contact-info">
+                <div class="info-block">
+                    <h5>Superhost Assignment</h5>
+                    <p>Managed directly by Khushi Narula</p>
+                </div>
+                <div class="info-block">
+                    <h5>Physical Location</h5>
+                    <p>1747 Connaught Residency, TDI Sector 74A,<br>Airport Road, Mohali, Punjab, India, Postal 160055</p>
+                </div>
+                <div class="info-block">
+                    <h5>Direct Digital Hotlines</h5>
+                    <p>📞 Phone/WhatsApp: <a href="tel:+918288028288">+91 82880 28288</a><br>✉️ Email: <a href="mailto:Khushinarula560@gmail.com">Khushinarula560@gmail.com</a></p>
+                </div>
+                <div class="info-block">
+                    <h5>Trust Shield Notice</h5>
+                    <p style="font-size: 13px; color: var(--accent); line-height: 1.4;">To maintain immediate tracking protection, double-booking prevention, and secured financial pathways, all final calendar reservations are securely verified and cross-processed through our live Airbnb infrastructure link above.</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form onsubmit="alert('Thank you for your inquiry. To lock your booking immediately, please click the verified Airbnb button at the top of the page!'); return false;">
+                    <div class="form-group">
+                        <label>Your Full Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Total Guests (Max 10)</label>
+                        <input type="number" min="1" max="10" placeholder="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Desired Stay Dates &amp; Special Requests</label>
+                        <textarea rows="4" placeholder="Mention tentative check-in/out dates..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Direct Booking Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 The Amber Loft. All Rights Reserved. Expertly curated for direct hosting verification &amp; corporate transparency.</p>
+    </footer>
+
+</body>
+</html>
